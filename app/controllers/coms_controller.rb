@@ -1,0 +1,2 @@
+class ComsController < ApplicationController
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  com_type: MyString
+  description: MyText
+  com_addr: MyString
+  com_tel: MyString
+
+two:
+  com_type: MyString
+  description: MyText
+  com_addr: MyString
+  com_tel: MyString
