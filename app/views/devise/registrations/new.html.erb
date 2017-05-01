@@ -1,0 +1,19 @@
+<h2>注 册</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true, label: "E-mail" %>
+    <%= f.input :user_name, required: true, label: "用户名" %>
+    <%= f.input :user_type, as: :radio_buttons, collection: [ ['个人用户', 1], ['企业用户',2] ], required: true, label: "用户类型" %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: "密码" %>
+    <%= f.input :password_confirmation, required: true, label: "确认密码" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "注 册" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

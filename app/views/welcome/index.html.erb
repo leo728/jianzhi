@@ -6,7 +6,15 @@
   <br>
    凭借自己的努力和天份也会变 Winner
   </p>
-  <p class="lead"><a class="btn btn-lg btn-danger" href="/jobs">马上应征</a></p>
+  <p class="lead">
+    <% if current_user && current_user.user_type == 1 %>
+      <a class="btn btn-lg btn-danger" href="/jobs">个人用户</a>
+    <% elsif current_user && current_user.user_type == 2 %>
+      <a class="btn btn-lg btn-danger" href="/jobs">企业用户</a>
+    <% else %>
+      <%= "" %>
+    <% end %>
+  </p>
 </div>
 
 <section id="company">
