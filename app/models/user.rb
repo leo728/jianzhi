@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :com
+  # has_many :jobs, through: :com
+  # has_many :participated_jobs, :through => :com, :source => :jobs
+  has_many :jobs
 end

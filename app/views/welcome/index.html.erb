@@ -10,7 +10,7 @@
     <% if current_user && current_user.user_type == 1 %>
       <a class="btn btn-lg btn-danger" href="/jobs">个人用户</a>
     <% elsif current_user && current_user.user_type == 2 %>
-      <a class="btn btn-lg btn-danger" href="/jobs">企业用户</a>
+      <%= link_to("企业用户", user_jobs_path(current_user), class: "btn btn-lg btn-danger") %>
     <% else %>
       <%= "" %>
     <% end %>

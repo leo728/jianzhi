@@ -1,0 +1,25 @@
+<div class="col-md-8">
+  <div class="group">
+    <%= Com.find_by(user: current_user).description %>
+    <%= current_user.user_name %>
+    <%= link_to("新增职缺", new_user_job_path, class: "btn btn-primary pull-right") %>
+    <% if Com.find_by(user: current_user) %>
+      <%= link_to("修改企业信息", edit_user_com_path(current_user,Com.find_by(user: current_user)), class: "btn btn-primary pull-right") %>
+    <% else %>
+      <%= link_to("新增企业信息", new_user_com_path, class: "btn btn-primary pull-right") %>
+    <% end %>
+  </div>
+  <table class="table table-bordered">
+    <% @jobs.each do |job| %>
+    <tr>
+      <td>
+        <%#= link_to(job.title, user_job_path(job)) %>
+        <%= job.title %>
+      </td>
+      <td>
+        <%= job.created_at %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
