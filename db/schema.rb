@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501154614) do
+ActiveRecord::Schema.define(version: 20170502140401) do
 
   create_table "coms", force: :cascade do |t|
     t.string   "com_type"
@@ -22,14 +22,32 @@ ActiveRecord::Schema.define(version: 20170501154614) do
     t.integer  "user_id"
   end
 
+  create_table "job_resume_relationships", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "jobseeker_resume_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
     t.integer  "wage_upper_bound"
     t.integer  "wage_lowr_bound"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "is_hidden",        default: true
+  end
+
+  create_table "jobseeker_resumes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "gender"
+    t.string   "birth"
+    t.string   "tel"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

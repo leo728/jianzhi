@@ -8,9 +8,9 @@
   </p>
   <p class="lead">
     <% if current_user && current_user.user_type == 1 %>
-      <a class="btn btn-lg btn-danger" href="/jobs">个人用户</a>
+      <%= link_to("个人用户请进", jobseeker_jobs_path, class: "btn btn-lg btn-danger") %>
     <% elsif current_user && current_user.user_type == 2 %>
-      <%= link_to("企业用户", user_jobs_path(current_user), class: "btn btn-lg btn-danger") %>
+      <%= link_to("企业用户请进", user_jobs_path(current_user), class: "btn btn-lg btn-danger") %>
     <% else %>
       <%= "" %>
     <% end %>

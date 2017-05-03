@@ -1,0 +1,24 @@
+<tr>
+  <td>#</td>
+  <td><%= job.title %></td>
+  <td><%= render_job_description(job) %></td>
+  <td><%= link_to(job.resumes.count, user_job_jobseeker_resumes_path(current_user, job)) %></td>
+  <td><%= job.wage_lowr_bound %></td>
+  <td><%= job.wage_upper_bound %></td>
+  <td><%= job.created_at %></td>
+  <td>
+    <% if current_user %>
+      <%= link_to("修改", edit_user_job_path(current_user,job), class: "btn btn-sm btn-default")%>
+      <%= link_to("删除", user_job_path(current_user, job),    class: "btn btn-sm btn-default",
+                  method: :delete, data: { confirm: "Are you sure?" } )%>
+
+      <% if job.is_hidden %>
+        <%= link_to("发布", publish_user_job_path(current_user, job), :method => :post, class: "btn btn-xs btn-success") %>
+      <% else %>
+        <%= link_to("隐藏", hide_user_job_path(current_user, job), :method => :post, class: "btn btn-xs btn-warning") %>
+      <% end %>
+
+    <% end %>
+  </td>
+
+</tr>

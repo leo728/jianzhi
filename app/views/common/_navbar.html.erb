@@ -16,6 +16,21 @@
                       <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
+                      <% if current_user && current_user.user_type == 1 %>
+                          <% if JobseekerResume.find_by(user: current_user) %>
+                            <%= link_to(" 修改个人信息 ", edit_user_jobseeker_resume_path(current_user,JobseekerResume.find_by(user: current_user))) %>
+                          <% else %>
+                            <%= link_to(" 新增个人信息 ", new_user_jobseeker_resume_path(current_user)) %>
+                          <% end %>
+                      <% elsif current_user && current_user.user_type == 2 %>
+                          <% if Com.find_by(user: current_user) %>
+                            <%= link_to(" 修改企业信息 ", edit_user_com_path(current_user,Com.find_by(user: current_user))) %>
+                          <% else %>
+                            <%= link_to(" 新增企业信息 ", new_user_com_path) %>
+                          <% end %>
+                      <% else %>
+                        <%= "" %>
+                      <% end %>
                       <li> <%= link_to("退出", destroy_user_session_path, method: :delete) %> </li>
                   </ul>
                 </li>

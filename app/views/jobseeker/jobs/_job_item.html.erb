@@ -1,0 +1,17 @@
+<tr>
+  <td>#</td>
+  <td><%= job.title %></td>
+  <td><%= User.find_by(id: job.user_id).user_name %></td>
+  <td><%= render_job_description(job) %></td>
+  <td><%= job.wage_lowr_bound %></td>
+  <td><%= job.wage_upper_bound %></td>
+  <td><%= job.created_at %></td>
+  <td>
+    <% if JobResumeRelationship.where("job_id = ? AND jobseeker_resume_id = ?", job.id, current_user.jobseeker_resume.id).exists? %>
+      已投
+    <% else %>
+      <%= link_to("投递简历", submit_jobseeker_job_path(job), method: :post, class: "btn btn-sm btn-default")%>
+    <% end %>
+  </td>
+
+</tr>
